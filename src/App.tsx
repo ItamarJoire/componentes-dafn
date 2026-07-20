@@ -1,7 +1,16 @@
+import { GovBrHeader } from './components/Header/index.ts'
+
 function App() {
   return (
     <div>
-      <h1>Hi</h1>
+      <GovBrHeader
+        onSearch={query => {
+          console.log('Buscar por:', query)
+        }}
+      />
+      <main style={{ padding: 24 }}>
+        <p>Conteúdo da página...</p>
+      </main>
     </div>
   )
 }
