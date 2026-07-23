@@ -1,32 +1,21 @@
 import React from 'react';
 import type { HeaderActionsProps } from './types';
-import { GridIcon, UserIcon } from './icons';
 
 /**
- * Botões de ação do header: "Atalhos gov.br" (outline) e "Entrar com gov.br" (preenchido).
- * Em telas pequenas, o sufixo "com gov.br" some via CSS (.gb-hide-mobile-inline),
- * restando apenas "Entrar".
+ * Container que agrupa os botões de ação do header. Não sabe nada sobre
+ * "Atalhos" ou "Entrar" — apenas organiza em linha (com espaçamento) o que
+ * for passado como children. Aceita 1, 2, 3 ou quantos HeaderButton forem
+ * necessários:
+ *
+ *   <HeaderActions>
+ *     <HeaderButton variant="secondary" href="#">Atalhos gov.br</HeaderButton>
+ *     <HeaderButton variant="primary" href="#">Entrar com gov.br</HeaderButton>
+ *   </HeaderActions>
  */
-const HeaderActions: React.FC<HeaderActionsProps> = ({
-  atalhosLabel = 'Atalhos gov.br',
-  atalhosHref = '#',
-  entrarShortLabel = 'Entrar',
-  entrarSuffix = ' com gov.br',
-  entrarHref = '#',
-}) => {
+const HeaderActions: React.FC<HeaderActionsProps> = ({ children, className = '' }) => {
   return (
-    <div className="gb-header__actions">
-      <a className="gb-btn gb-btn--outline" href={atalhosHref}>
-        <GridIcon size={16} />
-        <span>{atalhosLabel}</span>
-      </a>
-      <a className="gb-btn gb-btn--filled" href={entrarHref}>
-        <UserIcon size={16} />
-        <span>
-          {entrarShortLabel}
-          <span className="gb-hide-mobile-inline">{entrarSuffix}</span>
-        </span>
-      </a>
+    <div className={`gb-header__actions${className ? ` ${className}` : ''}`}>
+      {children}
     </div>
   );
 };

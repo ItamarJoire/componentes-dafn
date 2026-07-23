@@ -1,18 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
 import type { GovBrHeaderProps } from './types'
 import {
-  ChevronDownIcon,
   ChevronRightIcon,
   CloseIcon,
   ContrastIcon,
+  GridIcon,
   HandIcon,
   KebabIcon,
   MenuIcon,
   PaletteIcon,
-  SocialIcons
+  SocialIcons,
+  UserIcon
 } from './icons'
 import { defaultMenuSections, defaultSocialLinks, defaultTopNavLinks, defaultUsefulLinks } from './defaultData'
 import HeaderActions from './HeaderActions'
+import HeaderButton from './HeaderButton'
+import HeaderNav from './HeaderNav'
 import HeaderSearch from './HeaderSearch'
 import './Header.scss'
 
@@ -39,19 +42,14 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
   const [isDesktopPanelOpen, setIsDesktopPanelOpen] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileTopMenuOpen, setIsMobileTopMenuOpen] = useState(false)
-  const [isInstitucionalOpen, setIsInstitucionalOpen] = useState(false)
   const [activeSectionId, setActiveSectionId] = useState(defaultActiveSectionId ?? menuSections[0]?.id)
   const [highContrast, setHighContrast] = useState(false)
 
-  const institucionalRef = useRef<HTMLLIElement>(null)
   const kebabRef = useRef<HTMLDivElement>(null)
 
-  // Fecha os menus flutuantes ao clicar fora deles
+  // Fecha o menu kebab (mobile) ao clicar fora dele
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (institucionalRef.current && !institucionalRef.current.contains(event.target as Node)) {
-        setIsInstitucionalOpen(false)
-      }
       if (kebabRef.current && !kebabRef.current.contains(event.target as Node)) {
         setIsMobileTopMenuOpen(false)
       }
@@ -102,48 +100,17 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
 
         <p className="gb-header__ministry">{ministryName}</p>
 
-        <nav className="gb-header__nav" aria-label="Menu institucional">
-          <ul>
-            {topNavLinks.map(link =>
-              link.dropdownItems ? (
-                <li key={link.id} className="gb-header__nav-item gb-header__nav-item--dropdown" ref={institucionalRef}>
-                  <button
-                    type="button"
-                    className="gb-header__nav-link"
-                    aria-expanded={isInstitucionalOpen}
-                    onClick={() => setIsInstitucionalOpen(v => !v)}
-                  >
-                    {link.label}
-                    <ChevronDownIcon size={14} />
-                  </button>
-                  {isInstitucionalOpen && (
-                    <ul className="gb-header__dropdown">
-                      {link.dropdownItems.map(item => (
-                        <li key={item.id}>
-                          <a href={item.href}>{item.label}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ) : (
-                <li key={link.id} className="gb-header__nav-item">
-                  <a className="gb-header__nav-link" href={link.href}>
-                    {link.label}
-                  </a>
-                </li>
-              )
-            )}
-          </ul>
-        </nav>
+        <HeaderNav links={topNavLinks} />
 
-        <HeaderActions
-          atalhosLabel={atalhosLabel}
-          atalhosHref={atalhosHref}
-          entrarShortLabel={entrarShortLabel}
-          entrarSuffix={entrarSuffix}
-          entrarHref={entrarHref}
-        />
+        <HeaderActions>
+          <HeaderButton variant="secondary" href={atalhosHref} icon={<GridIcon size={16} />}>
+            {atalhosLabel}
+          </HeaderButton>
+          <HeaderButton variant="primary" href={entrarHref} icon={<UserIcon size={16} />}>
+            {entrarShortLabel}
+            <span className="gb-hide-mobile-inline">{entrarSuffix}</span>
+          </HeaderButton>
+        </HeaderActions>
 
         {/* Menu "kebab" visível apenas em telas pequenas, agrupa Institucional/Acessibilidade/Participe */}
         <div className="gb-header__kebab" ref={kebabRef}>

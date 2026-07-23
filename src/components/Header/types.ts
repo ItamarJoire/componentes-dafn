@@ -1,3 +1,5 @@
+import type { MouseEvent, ReactNode } from 'react';
+
 export interface SubMenuLink {
   id: string;
   label: string;
@@ -32,15 +34,32 @@ export interface TopNavLink {
   dropdownItems?: SubMenuLink[];
 }
 
-/** Props do componente HeaderActions (botões "Atalhos gov.br" e "Entrar com gov.br") */
+/** Props do componente HeaderNav (menu "Institucional / Acessibilidade / Participe", com dropdown) */
+export interface HeaderNavProps {
+  links: TopNavLink[];
+  ariaLabel?: string;
+}
+
+export type HeaderButtonVariant = 'primary' | 'secondary' | 'tertiary';
+
+/** Props do componente HeaderButton — um botão único e reutilizável do header. */
+export interface HeaderButtonProps {
+  /** Estilo visual do botão. @default 'secondary' */
+  variant?: HeaderButtonVariant;
+  /** Se informado, o botão vira um link (<a>); senão, vira um <button>. */
+  href?: string;
+  /** Ícone exibido antes do texto (ex: <GridIcon />). */
+  icon?: ReactNode;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
+  ariaLabel?: string;
+  className?: string;
+  children: ReactNode;
+}
+
+/** Props do componente HeaderActions — apenas um container flex para agrupar de 1 a N HeaderButton. */
 export interface HeaderActionsProps {
-  atalhosLabel?: string;
-  atalhosHref?: string;
-  /** Texto sempre visível do botão de entrar (ex: "Entrar") */
-  entrarShortLabel?: string;
-  /** Complemento exibido apenas em telas maiores (ex: " com gov.br") */
-  entrarSuffix?: string;
-  entrarHref?: string;
+  children: ReactNode;
+  className?: string;
 }
 
 /** Props do componente HeaderSearch (campo de busca com microfone e lupa) */
@@ -49,7 +68,7 @@ export interface HeaderSearchProps {
   onSearch?: (query: string) => void;
 }
 
-export interface GovBrHeaderProps extends HeaderActionsProps {
+export interface GovBrHeaderProps {
   /** Nome do órgão superior, exibido ao lado da logo (ex: Ministério da Gestão...) */
   ministryName?: string;
   /** Nome do órgão/instituto, exibido na barra de busca */
@@ -58,6 +77,13 @@ export interface GovBrHeaderProps extends HeaderActionsProps {
   logoHref?: string;
   /** Links do menu superior (Institucional, Acessibilidade, Participe...) */
   topNavLinks?: TopNavLink[];
+  atalhosLabel?: string;
+  atalhosHref?: string;
+  /** Texto sempre visível do botão de entrar (ex: "Entrar") */
+  entrarShortLabel?: string;
+  /** Complemento exibido apenas em telas maiores (ex: " com gov.br") */
+  entrarSuffix?: string;
+  entrarHref?: string;
   searchPlaceholder?: string;
   onSearch?: (query: string) => void;
   /** Seções do menu lateral (mega menu) */

@@ -219,23 +219,36 @@
     color 0.15s ease;
 }
 
-.gb-btn--outline {
+.gb-btn--secondary {
   border-color: var(--gb-blue);
   color: var(--gb-blue);
   background: var(--gb-white);
 }
 
-.gb-btn--outline:hover {
+.gb-btn--secondary:hover {
   background: var(--gb-gray-100);
 }
 
-.gb-btn--filled {
+.gb-btn--primary {
   background: var(--gb-blue);
   color: var(--gb-white);
 }
 
-.gb-btn--filled:hover {
+.gb-btn--primary:hover {
   background: var(--gb-blue-dark);
+}
+
+.gb-btn--tertiary {
+  background: transparent;
+  color: var(--gb-blue);
+  border-color: transparent;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.gb-btn--tertiary:hover {
+  background: var(--gb-gray-100);
+  text-decoration: underline;
 }
 
 .gb-header__kebab {
@@ -464,14 +477,18 @@
   color: #fff;
 }
 
-.gb-header--contrast .gb-btn--outline {
+.gb-header--contrast .gb-btn--secondary {
   border-color: #fff;
   color: #fff;
 }
 
-.gb-header--contrast .gb-btn--filled {
+.gb-header--contrast .gb-btn--primary {
   background: #fff;
   color: #000;
+}
+
+.gb-header--contrast .gb-btn--tertiary {
+  color: #fff;
 }
 
 .gb-header--contrast .gb-icon-btn {
