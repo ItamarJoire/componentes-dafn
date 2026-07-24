@@ -1,6 +1,5 @@
-export { default as GovBrHeader } from './Header'
-export { default as HeaderActions } from './HeaderActions'
-export { default as HeaderButton } from './HeaderButton'
+export { Header } from './Header'
+export { HeaderButtonContainer } from './HeaderButtonContainer'
 export { default as HeaderNav } from './HeaderNav'
 export { default as HeaderSearch } from './HeaderSearch'
 export * from './types'

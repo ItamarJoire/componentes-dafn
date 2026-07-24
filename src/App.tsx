@@ -1,9 +1,9 @@
-import { GovBrHeader } from './components/Header/index.ts'
+import { Header } from './components/Header'
 
 function App() {
   return (
     <div>
-      <GovBrHeader
+      <Header
         onSearch={query => {
           console.log('Buscar por:', query)
         }}

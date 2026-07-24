@@ -41,27 +41,13 @@
   padding: 0;
 }
 
-.gb-header button {
-  font: inherit;
-  cursor: pointer;
-}
 
-.gb-header a {
-  color: inherit;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .gb-header * {
     transition: none !important;
     animation: none !important;
   }
-}
-
-.gb-header button:focus-visible,
-.gb-header a:focus-visible,
-.gb-header input:focus-visible {
-  outline: 3px solid var(--gb-blue);
-  outline-offset: 2px;
 }
 
 /* ==========================================================================
@@ -194,61 +180,6 @@
 .gb-header__dropdown li a:hover {
   background: var(--gb-gray-100);
   color: var(--gb-blue);
-}
-
-.gb-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
-}
-
-.gb-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  border: 1.5px solid transparent;
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-.gb-btn--secondary {
-  border-color: var(--gb-blue);
-  color: var(--gb-blue);
-  background: var(--gb-white);
-}
-
-.gb-btn--secondary:hover {
-  background: var(--gb-gray-100);
-}
-
-.gb-btn--primary {
-  background: var(--gb-blue);
-  color: var(--gb-white);
-}
-
-.gb-btn--primary:hover {
-  background: var(--gb-blue-dark);
-}
-
-.gb-btn--tertiary {
-  background: transparent;
-  color: var(--gb-blue);
-  border-color: transparent;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.gb-btn--tertiary:hover {
-  background: var(--gb-gray-100);
-  text-decoration: underline;
 }
 
 .gb-header__kebab {
@@ -516,11 +447,6 @@
   .gb-header__kebab {
     display: block;
     order: 2;
-  }
-
-  .gb-header__actions {
-    order: 3;
-    gap: 8px;
   }
 
   .gb-logo {

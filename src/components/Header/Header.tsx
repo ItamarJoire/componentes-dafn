@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import type { GovBrHeaderProps } from './types'
+import type { HeaderProps } from './types'
 import {
   ChevronRightIcon,
   CloseIcon,
@@ -13,13 +13,13 @@ import {
   UserIcon
 } from './icons'
 import { defaultMenuSections, defaultSocialLinks, defaultTopNavLinks, defaultUsefulLinks } from './defaultData'
-import HeaderActions from './HeaderActions'
-import HeaderButton from './HeaderButton'
+import { HeaderButtonContainer } from './HeaderButtonContainer'
+import { Button } from '../Button'
 import HeaderNav from './HeaderNav'
 import HeaderSearch from './HeaderSearch'
-import './Header.scss'
+import styles from './Header.module.scss'
 
-const GovBrHeader: React.FC<GovBrHeaderProps> = ({
+export const Header: React.FC<HeaderProps> = ({
   ministryName = 'Ministério da Gestão e da Inovação em Serviços Públicos',
   institutionName = 'Instituto Nacional de Tecnologia da Informação',
   logoHref = '/',
@@ -72,15 +72,15 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
   const isPanelOpen = isDesktopPanelOpen || isMobileMenuOpen
 
   return (
-    <header className={`gb-header${highContrast ? ' gb-header--contrast' : ''}`}>
+    <header className={`${styles['gb-header']} ${highContrast ? styles['gb-header--contrast'] : ''}`}>
       {/* Barra utilitária (paleta / alto contraste) */}
-      <div className="gb-header__utility">
-        <button type="button" className="gb-icon-btn" aria-label="Selecionar paleta de cores">
+      <div className={styles['gb-header__utility']}>
+        <button type="button" className={styles['gb-icon-btn']} aria-label="Selecionar paleta de cores">
           <PaletteIcon size={18} />
         </button>
         <button
           type="button"
-          className="gb-icon-btn"
+          className={styles['gb-icon-btn']}
           aria-label="Ativar alto contraste"
           aria-pressed={highContrast}
           onClick={() => setHighContrast(v => !v)}
@@ -90,33 +90,33 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
       </div>
 
       {/* Barra principal: logo, navegação institucional e ações */}
-      <div className="gb-header__main">
-        <a href={logoHref} className="gb-header__logo" aria-label="Página inicial gov.br">
-          <span className="gb-logo">
-            <span className="gb-logo__gov">gov</span>
-            <span className="gb-logo__br">.br</span>
+      <div className={styles['gb-header__main']}>
+        <a href={logoHref} className={styles['gb-header__logo']} aria-label="Página inicial gov.br">
+          <span className={styles['gb-logo']}>
+            <span className={styles['gb-logo__gov']}>gov</span>
+            <span className={styles['gb-logo__br']}>.br</span>
           </span>
         </a>
 
-        <p className="gb-header__ministry">{ministryName}</p>
+        <p className={styles['gb-header__ministry']}>{ministryName}</p>
 
         <HeaderNav links={topNavLinks} />
 
-        <HeaderActions>
-          <HeaderButton variant="secondary" href={atalhosHref} icon={<GridIcon size={16} />}>
+        <HeaderButtonContainer>
+          <Button href={atalhosHref} icon={<GridIcon size={16} />}>
             {atalhosLabel}
-          </HeaderButton>
-          <HeaderButton variant="primary" href={entrarHref} icon={<UserIcon size={16} />}>
+          </Button>
+          <Button variant="secondary" href={entrarHref} icon={<UserIcon size={16} />}>
             {entrarShortLabel}
-            <span className="gb-hide-mobile-inline">{entrarSuffix}</span>
-          </HeaderButton>
-        </HeaderActions>
+            <span className={styles['gb-hide-mobile-inline']}>{entrarSuffix}</span>
+          </Button>
+        </HeaderButtonContainer>
 
-        {/* Menu "kebab" visível apenas em telas pequenas, agrupa Institucional/Acessibilidade/Participe */}
-        <div className="gb-header__kebab" ref={kebabRef}>
+        {/* Menu "kebab" visível apenas em telas pequenas */}
+        <div className={styles['gb-header__kebab']} ref={kebabRef}>
           <button
             type="button"
-            className="gb-icon-btn"
+            className={styles['gb-icon-btn']}
             aria-label="Mais opções"
             aria-expanded={isMobileTopMenuOpen}
             onClick={() => setIsMobileTopMenuOpen(v => !v)}
@@ -124,7 +124,7 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
             <KebabIcon size={20} />
           </button>
           {isMobileTopMenuOpen && (
-            <ul className="gb-header__kebab-menu">
+            <ul className={styles['gb-header__kebab-menu']}>
               {topNavLinks.map(link => (
                 <li key={link.id}>
                   <a href={link.href ?? '#'}>{link.label}</a>
@@ -136,10 +136,10 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
       </div>
 
       {/* Barra da instituição: alterna o menu lateral e concentra a busca */}
-      <div className="gb-header__institution">
+      <div className={styles['gb-header__institution']}>
         <button
           type="button"
-          className="gb-icon-btn gb-header__menu-toggle"
+          className={`${styles['gb-icon-btn']} ${styles['gb-header__menu-toggle']}`}
           aria-label={isPanelOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={isPanelOpen}
           onClick={handleMenuToggleClick}
@@ -147,21 +147,21 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
           {isPanelOpen ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
         </button>
 
-        <h1 className="gb-header__title">{institutionName}</h1>
+        <h1 className={styles['gb-header__title']}>{institutionName}</h1>
 
         <HeaderSearch placeholder={searchPlaceholder} onSearch={onSearch} />
       </div>
 
-      {/* Painel de menu para telas grandes (mega menu com duas colunas) */}
+      {/* Painel de menu para telas grandes */}
       {isDesktopPanelOpen && (
-        <div className="gb-header__panel gb-header__panel--desktop">
-          <nav className="gb-panel__nav" aria-label="Assuntos do site">
+        <div className={`${styles['gb-header__panel']} ${styles['gb-header__panel--desktop']}`}>
+          <nav className={styles['gb-panel__nav']} aria-label="Assuntos do site">
             <ul>
               {menuSections.map(section => (
                 <li key={section.id}>
                   <button
                     type="button"
-                    className={`gb-panel__nav-link${section.id === activeSectionId ? ' is-active' : ''}`}
+                    className={`${styles['gb-panel__nav-link']} ${section.id === activeSectionId ? styles['is-active'] : ''}`}
                     onClick={() => handleSectionClick(section.id)}
                   >
                     {section.label}
@@ -170,17 +170,17 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
                 </li>
               ))}
             </ul>
-            <div className="gb-panel__govbr">
-              <button type="button" className="gb-panel__nav-link">
+            <div className={styles['gb-panel__govbr']}>
+              <button type="button" className={styles['gb-panel__nav-link']}>
                 gov.br
                 <ChevronRightIcon size={16} />
               </button>
             </div>
           </nav>
 
-          <div className="gb-panel__content">
+          <div className={styles['gb-panel__content']}>
             {activeSection?.submenu ? (
-              <ul className="gb-panel__links">
+              <ul className={styles['gb-panel__links']}>
                 {activeSection.submenu.map(item => (
                   <li key={item.id}>
                     <a href={item.href}>{item.label}</a>
@@ -188,28 +188,28 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
                 ))}
               </ul>
             ) : (
-              <p className="gb-panel__empty">Conteúdo de &ldquo;{activeSection?.label}&rdquo; em breve.</p>
+              <p className={styles['gb-panel__empty']}>Conteúdo de &ldquo;{activeSection?.label}&rdquo; em breve.</p>
             )}
           </div>
         </div>
       )}
 
-      {/* Menu para telas pequenas (empilhado, com links úteis e redes sociais) */}
+      {/* Menu para telas pequenas */}
       {isMobileMenuOpen && (
-        <div className="gb-header__panel gb-header__panel--mobile">
-          <ul className="gb-panel__nav-mobile">
+        <div className={`${styles['gb-header__panel']} ${styles['gb-header__panel--mobile']}`}>
+          <ul className={styles['gb-panel__nav-mobile']}>
             {menuSections.map(section => (
               <li key={section.id}>
                 <button
                   type="button"
-                  className={`gb-panel__nav-link${section.id === activeSectionId ? ' is-active' : ''}`}
+                  className={`${styles['gb-panel__nav-link']} ${section.id === activeSectionId ? styles['is-active'] : ''}`}
                   onClick={() => handleSectionClick(section.id)}
                 >
                   {section.label}
                   {section.submenu && <ChevronRightIcon size={16} />}
                 </button>
                 {section.id === activeSectionId && section.submenu && (
-                  <ul className="gb-panel__links gb-panel__links--nested">
+                  <ul className={`${styles['gb-panel__links']} ${styles['gb-panel__links--nested']}`}>
                     {section.submenu.map(item => (
                       <li key={item.id}>
                         <a href={item.href}>{item.label}</a>
@@ -221,16 +221,16 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
             ))}
           </ul>
 
-          <div className="gb-panel__section">
-            <button type="button" className="gb-panel__nav-link">
+          <div className={styles['gb-panel__section']}>
+            <button type="button" className={styles['gb-panel__nav-link']}>
               gov.br
               <ChevronRightIcon size={16} />
             </button>
           </div>
 
-          <div className="gb-panel__section">
-            <h2 className="gb-panel__section-title">{usefulLinksTitle}</h2>
-            <ul className="gb-panel__useful-links">
+          <div className={styles['gb-panel__section']}>
+            <h2 className={styles['gb-panel__section-title']}>{usefulLinksTitle}</h2>
+            <ul className={styles['gb-panel__useful-links']}>
               {usefulLinks.map(link => (
                 <li key={link.id}>
                   <a href={link.href}>{link.label}</a>
@@ -239,9 +239,9 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
             </ul>
           </div>
 
-          <div className="gb-panel__section">
-            <h2 className="gb-panel__section-title">{socialLinksTitle}</h2>
-            <ul className="gb-panel__social-links">
+          <div className={styles['gb-panel__section']}>
+            <h2 className={styles['gb-panel__section-title']}>{socialLinksTitle}</h2>
+            <ul className={styles['gb-panel__social-links']}>
               {socialLinks.map(social => {
                 const Icon = SocialIcons[social.icon]
                 return (
@@ -257,14 +257,12 @@ const GovBrHeader: React.FC<GovBrHeaderProps> = ({
         </div>
       )}
 
-      {/* Botão flutuante de acessibilidade (estilo VLibras), fixo na tela */}
+      {/* Botão flutuante de acessibilidade */}
       {showAccessibilityWidget && (
-        <button type="button" className="gb-header__a11y-fab" aria-label="Acessibilidade em Libras">
+        <button type="button" className={styles['gb-header__a11y-fab']} aria-label="Acessibilidade em Libras">
           <HandIcon size={24} />
         </button>
       )}
     </header>
   )
 }
-
-export default GovBrHeader
