@@ -19,6 +19,15 @@
   }
 }
 
+.btn--primary {
+  color: var(--white);
+  background: var(--blue-warm-vivid-70-main);
+}
+
+.btn--primary:hover {
+  background: var(--blue-warm-vivid-90);
+}
+
 .btn--secondary {
   border-color: var(--blue-warm-vivid-70-main);
   color: var(--blue-warm-vivid-70-main);
@@ -31,16 +40,7 @@
 }
 
 .btn--secondary:hover {
-  background: var(--gb-gray-100);
-}
-
-.btn--primary {
-  color: var(--white);
-  background: var(--blue-warm-vivid-70-main);
-}
-
-.btn--primary:hover {
-  background: var(--gb-blue-dark);
+  background: var(--blue-warm-vivid-5);
 }
 
 .btn--tertiary {

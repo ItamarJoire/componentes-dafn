@@ -4,7 +4,6 @@ import {
   ChevronRightIcon,
   CloseIcon,
   ContrastIcon,
-  GridIcon,
   HandIcon,
   KebabIcon,
   MenuIcon,
@@ -22,12 +21,11 @@ import styles from './Header.module.scss'
 export const Header: React.FC<HeaderProps> = ({
   ministryName = 'Ministério da Gestão e da Inovação em Serviços Públicos',
   institutionName = 'Instituto Nacional de Tecnologia da Informação',
+  systemName = 'Plano de Anual de Auditoria Operacional (PLAAO)',
   logoHref = '/',
   topNavLinks = defaultTopNavLinks,
-  atalhosLabel = 'Atalhos gov.br',
-  atalhosHref = '#',
   entrarShortLabel = 'Entrar',
-  entrarSuffix = ' com gov.br',
+  entrarSuffix = ' com GOV.BR',
   entrarHref = '#',
   searchPlaceholder = 'O que você procura?',
   onSearch,
@@ -72,12 +70,12 @@ export const Header: React.FC<HeaderProps> = ({
   const isPanelOpen = isDesktopPanelOpen || isMobileMenuOpen
 
   return (
-    <header className={`${styles['gb-header']} ${highContrast ? styles['gb-header--contrast'] : ''}`}>
+    <header className={`${styles['iti-header']} ${highContrast ? styles['iti-header--contrast'] : ''}`}>
       {/* Barra utilitária (paleta / alto contraste) */}
-      <div className={styles['gb-header__utility']}>
-        <button type="button" className={styles['gb-icon-btn']} aria-label="Selecionar paleta de cores">
+      <div className={styles['iti-header__utility']}>
+        {/* <button type="button" className={styles['gb-icon-btn']} aria-label="Selecionar paleta de cores">
           <PaletteIcon size={18} />
-        </button>
+        </button> */}
         <button
           type="button"
           className={styles['gb-icon-btn']}
@@ -90,30 +88,24 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Barra principal: logo, navegação institucional e ações */}
-      <div className={styles['gb-header__main']}>
-        <a href={logoHref} className={styles['gb-header__logo']} aria-label="Página inicial gov.br">
-          <span className={styles['gb-logo']}>
-            <span className={styles['gb-logo__gov']}>gov</span>
-            <span className={styles['gb-logo__br']}>.br</span>
-          </span>
+      <div className={styles['iti-header__main']}>
+        <a href={logoHref} className={styles['header-logo']} aria-label="Página inicial gov.br">
+          <img src="../src/assets/govbr.webp" alt="Logo gov.br" width={90} height={32} />
         </a>
 
-        <p className={styles['gb-header__ministry']}>{ministryName}</p>
+        <p className={styles['iti-header-ministry']}>{ministryName}</p>
 
         <HeaderNav links={topNavLinks} />
 
         <HeaderButtonContainer>
-          <Button href={atalhosHref} icon={<GridIcon size={16} />}>
-            {atalhosLabel}
-          </Button>
-          <Button variant="secondary" href={entrarHref} icon={<UserIcon size={16} />}>
+          <Button variant="primary" href={entrarHref} icon={<UserIcon size={16} />}>
             {entrarShortLabel}
             <span className={styles['gb-hide-mobile-inline']}>{entrarSuffix}</span>
           </Button>
         </HeaderButtonContainer>
 
         {/* Menu "kebab" visível apenas em telas pequenas */}
-        <div className={styles['gb-header__kebab']} ref={kebabRef}>
+        <div className={styles['iti-header__kebab']} ref={kebabRef}>
           <button
             type="button"
             className={styles['gb-icon-btn']}
@@ -124,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
             <KebabIcon size={20} />
           </button>
           {isMobileTopMenuOpen && (
-            <ul className={styles['gb-header__kebab-menu']}>
+            <ul className={styles['iti-header__kebab-menu']}>
               {topNavLinks.map(link => (
                 <li key={link.id}>
                   <a href={link.href ?? '#'}>{link.label}</a>
@@ -136,10 +128,10 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Barra da instituição: alterna o menu lateral e concentra a busca */}
-      <div className={styles['gb-header__institution']}>
+      <div className={styles['iti-header-institution']}>
         <button
           type="button"
-          className={`${styles['gb-icon-btn']} ${styles['gb-header__menu-toggle']}`}
+          className={`${styles['gb-icon-btn']} ${styles['iti-header__menu-toggle']}`}
           aria-label={isPanelOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={isPanelOpen}
           onClick={handleMenuToggleClick}
@@ -147,14 +139,17 @@ export const Header: React.FC<HeaderProps> = ({
           {isPanelOpen ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
         </button>
 
-        <h1 className={styles['gb-header__title']}>{institutionName}</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <h1 className={styles['iti-header-title']}>{institutionName}</h1>
+          <p className={styles['iti-header-paragh']}>{systemName}</p>
+        </div>
 
         <HeaderSearch placeholder={searchPlaceholder} onSearch={onSearch} />
       </div>
 
       {/* Painel de menu para telas grandes */}
       {isDesktopPanelOpen && (
-        <div className={`${styles['gb-header__panel']} ${styles['gb-header__panel--desktop']}`}>
+        <div className={`${styles['iti-header__panel']} ${styles['iti-header__panel--desktop']}`}>
           <nav className={styles['gb-panel__nav']} aria-label="Assuntos do site">
             <ul>
               {menuSections.map(section => (
@@ -196,7 +191,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Menu para telas pequenas */}
       {isMobileMenuOpen && (
-        <div className={`${styles['gb-header__panel']} ${styles['gb-header__panel--mobile']}`}>
+        <div className={`${styles['iti-header__panel']} ${styles['iti-header__panel--mobile']}`}>
           <ul className={styles['gb-panel__nav-mobile']}>
             {menuSections.map(section => (
               <li key={section.id}>
@@ -259,7 +254,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Botão flutuante de acessibilidade */}
       {showAccessibilityWidget && (
-        <button type="button" className={styles['gb-header__a11y-fab']} aria-label="Acessibilidade em Libras">
+        <button type="button" className={styles['iti-header__a11y-fab']} aria-label="Acessibilidade em Libras">
           <HandIcon size={24} />
         </button>
       )}

@@ -1,50 +1,25 @@
-/* ==========================================================================
-   GovBrHeader — tokens
-   ========================================================================== */
-.gb-header {
-  --gb-blue: #1351b4;
-  --gb-blue-dark: #0c326f;
-  --gb-blue-darker: #071d41;
-  --gb-green: #168821;
-  --gb-yellow: #ffcd07;
-  --gb-gray-900: #1c1c1c;
-  --gb-gray-700: #4b5563;
-  --gb-gray-500: #6b7280;
-  --gb-gray-200: #e5e7eb;
-  --gb-gray-100: #f3f4f6;
-  --gb-white: #ffffff;
-  --gb-border: #d4d4d4;
-
-  font-family:
-    'Rawline',
-    'Roboto',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    sans-serif;
-  color: var(--gb-gray-900);
-  background: var(--gb-white);
-  border-bottom: 1px solid var(--gb-border);
+.iti-header {
+  color: var(--gray-90);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-5);
   position: relative;
 }
 
-.gb-header,
-.gb-header *,
-.gb-header *::before,
-.gb-header *::after {
+.iti-header,
+.iti-header *,
+.iti-header *::before,
+.iti-header *::after {
   box-sizing: border-box;
 }
 
-.gb-header ul {
+.iti-header ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-
-
 @media (prefers-reduced-motion: reduce) {
-  .gb-header * {
+  .iti-header * {
     transition: none !important;
     animation: none !important;
   }
@@ -62,18 +37,18 @@
   border-radius: 50%;
   border: none;
   background: transparent;
-  color: var(--gb-gray-700);
+  color: var(--gray-50);
   transition:
     background 0.15s ease,
     color 0.15s ease;
 }
 
 .gb-icon-btn:hover {
-  background: var(--gb-gray-100);
-  color: var(--gb-blue);
+  background: var(--gray-5);
+  color: var(--blue-warm-vivid-70-main);
 }
 
-.gb-header__utility {
+.iti-header__utility {
   display: flex;
   justify-content: flex-end;
   gap: 4px;
@@ -83,7 +58,7 @@
 /* ==========================================================================
    Barra principal (logo, navegação institucional, ações)
    ========================================================================== */
-.gb-header__main {
+.iti-header__main {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -91,7 +66,7 @@
   flex-wrap: nowrap;
 }
 
-.gb-header__logo {
+.header-logo {
   flex-shrink: 0;
   text-decoration: none;
   line-height: 1;
@@ -111,35 +86,35 @@
 }
 
 .gb-logo__br {
-  color: var(--gb-gray-500);
+  color: var(--gray-50);
   margin-left: 1px;
 }
 
-.gb-header__ministry {
+.iti-header-ministry {
   margin: 0;
   padding-left: 16px;
-  border-left: 1px solid var(--gb-border);
+  border-left: 1px solid var(--gray-5);
   font-size: 13px;
   line-height: 1.3;
-  color: var(--gb-gray-700);
+  color: var(--gray-50);
   max-width: 260px;
 }
 
-.gb-header__nav {
+.iti-header__nav {
   margin-left: 8px;
 }
 
-.gb-header__nav ul {
+.iti-header__nav ul {
   display: flex;
   align-items: center;
   gap: 22px;
 }
 
-.gb-header__nav-item {
+.iti-header__nav-item {
   position: relative;
 }
 
-.gb-header__nav-link {
+.iti-header__nav-link {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -147,96 +122,101 @@
   background: none;
   padding: 4px 0;
   font-size: 14px;
-  color: var(--gb-gray-700);
+  color: var(--gray-50);
   text-decoration: none;
   white-space: nowrap;
 }
 
-.gb-header__nav-link:hover {
-  color: var(--gb-blue);
+.iti-header__nav-link:hover {
+  color: var(--blue-warm-vivid-70-main);
 }
 
-.gb-header__dropdown {
+.iti-header__dropdown {
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
   z-index: 20;
   min-width: 220px;
   padding: 8px 0;
-  background: var(--gb-white);
-  border: 1px solid var(--gb-border);
+  background: var(--white);
+  border: 1px solid var(--gray-5);
   border-radius: 6px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.gb-header__dropdown li a {
+.iti-header__dropdown li a {
   display: block;
   padding: 8px 18px;
   font-size: 14px;
-  color: var(--gb-gray-700);
+  color: var(--gray-50);
   text-decoration: none;
 }
 
-.gb-header__dropdown li a:hover {
-  background: var(--gb-gray-100);
-  color: var(--gb-blue);
+.iti-header__dropdown li a:hover {
+  background: var(--gray-5);
+  color: var(--blue-warm-vivid-70-main);
 }
 
-.gb-header__kebab {
+.iti-header__kebab {
   display: none;
   position: relative;
   flex-shrink: 0;
 }
 
-.gb-header__kebab-menu {
+.iti-header__kebab-menu {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
   z-index: 30;
   min-width: 190px;
   padding: 8px 0;
-  background: var(--gb-white);
-  border: 1px solid var(--gb-border);
+  background: var(--white);
+  border: 1px solid var(--gray-5);
   border-radius: 6px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.gb-header__kebab-menu li a {
+.iti-header__kebab-menu li a {
   display: block;
   padding: 8px 18px;
   font-size: 14px;
-  color: var(--gb-gray-700);
+  color: var(--gray-50);
   text-decoration: none;
 }
 
-.gb-header__kebab-menu li a:hover {
-  background: var(--gb-gray-100);
-  color: var(--gb-blue);
+.iti-header__kebab-menu li a:hover {
+  background: var(--gray-5);
+  color: var(--blue-warm-vivid-70-main);
 }
 
 /* ==========================================================================
    Barra da instituição (toggle do menu, título e busca)
    ========================================================================== */
-.gb-header__institution {
+.iti-header-institution {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 14px 24px;
-  border-top: 1px solid var(--gb-border);
+  border-top: 1px solid var(--gray-5);
 }
 
-.gb-header__menu-toggle {
+.iti-header__menu-toggle {
   flex-shrink: 0;
 }
 
-.gb-header__title {
+.iti-header-title {
   margin: 0;
   font-size: 20px;
-  font-weight: 700;
-  color: var(--gb-gray-900);
+  font-weight: 500;
+  color: var(--gray-80-main);
 }
 
-.gb-header__search {
+.iti-header-paragh {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.iti-header__search {
   display: flex;
   align-items: center;
   gap: 2px;
@@ -244,40 +224,40 @@
   width: 100%;
   max-width: 420px;
   padding: 4px 8px 4px 18px;
-  background: var(--gb-gray-100);
-  border: 1px solid var(--gb-border);
+  background: var(--gray-5);
+  border: 1px solid var(--gray-5);
   border-radius: 999px;
 }
 
-.gb-header__search input {
+.iti-header__search input {
   flex: 1;
   min-width: 0;
   padding: 7px 0;
   border: none;
   background: transparent;
   font-size: 14px;
-  color: var(--gb-gray-900);
+  color: var(--gray-90);
   outline: none;
 }
 
-.gb-header__search input::placeholder {
-  color: var(--gb-gray-500);
+.iti-header__search input::placeholder {
+  color: var(--gray-50);
 }
 
 /* ==========================================================================
    Painel de menu (mega menu) — versão desktop, duas colunas
    ========================================================================== */
-.gb-header__panel--desktop {
+.iti-header__panel--desktop {
   display: flex;
   align-items: stretch;
-  border-top: 1px solid var(--gb-border);
+  border-top: 1px solid var(--gray-5);
 }
 
 .gb-panel__nav {
   width: 270px;
   flex-shrink: 0;
-  background: var(--gb-gray-100);
-  border-right: 1px solid var(--gb-border);
+  background: var(--gray-5);
+  border-right: 1px solid var(--gray-5);
   padding-bottom: 12px;
 }
 
@@ -290,25 +270,25 @@
   padding: 14px 22px;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--gb-border);
+  border-bottom: 1px solid var(--gray-5);
   text-align: left;
   font-size: 15px;
-  color: var(--gb-gray-900);
+  color: var(--gray-90);
 }
 
 .gb-panel__nav-link:hover {
-  background: var(--gb-gray-200);
+  background: var(--gray-10);
 }
 
 .gb-panel__nav-link.is-active {
-  background: var(--gb-blue-darker);
-  color: var(--gb-white);
+  background: var(--blue-warm-vivid-90);
+  color: var(--white);
 }
 
 .gb-panel__govbr {
   margin-top: 14px;
   padding-top: 8px;
-  border-top: 4px solid var(--gb-border);
+  border-top: 4px solid var(--gray-5);
 }
 
 .gb-panel__content {
@@ -327,31 +307,31 @@
   display: block;
   padding: 9px 0;
   font-size: 14px;
-  color: var(--gb-gray-700);
+  color: var(--gray-50);
   text-decoration: none;
-  border-bottom: 1px solid var(--gb-gray-100);
+  border-bottom: 1px solid var(--gray-5);
 }
 
 .gb-panel__links li a:hover {
-  color: var(--gb-blue);
+  color: var(--blue-warm-vivid-70-main);
 }
 
 .gb-panel__empty {
-  color: var(--gb-gray-500);
+  color: var(--gray-50);
   font-size: 14px;
 }
 
 /* ==========================================================================
    Painel de menu — versão mobile (empilhado)
    ========================================================================== */
-.gb-header__panel--mobile {
+.iti-header__panel--mobile {
   display: none;
 }
 
 /* ==========================================================================
    Widget flutuante de acessibilidade (estilo VLibras)
    ========================================================================== */
-.gb-header__a11y-fab {
+.iti-header__a11y-fab {
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -360,8 +340,8 @@
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: var(--gb-blue);
-  color: var(--gb-white);
+  background: var(--blue-warm-vivid-70-main);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,60 +349,60 @@
   transition: background 0.15s ease;
 }
 
-.gb-header__a11y-fab:hover {
-  background: var(--gb-blue-dark);
+.iti-header__a11y-fab:hover {
+  background: var(--blue-warm-vivid-90);
 }
 
 /* ==========================================================================
    Modo alto contraste (alternado pelo botão utilitário)
    ========================================================================== */
-.gb-header--contrast {
+.iti-header--contrast {
   background: #000;
   color: #fff;
 }
 
-.gb-header--contrast .gb-header__title,
-.gb-header--contrast .gb-header__ministry,
-.gb-header--contrast .gb-header__nav-link,
-.gb-header--contrast .gb-panel__nav-link,
-.gb-header--contrast .gb-panel__links li a {
+.iti-header--contrast .iti-header-title,
+.iti-header--contrast .iti-header-ministry,
+.iti-header--contrast .iti-header__nav-link,
+.iti-header--contrast .gb-panel__nav-link,
+.iti-header--contrast .gb-panel__links li a {
   color: #fff;
 }
 
-.gb-header--contrast .gb-header__utility,
-.gb-header--contrast .gb-header__main,
-.gb-header--contrast .gb-header__institution,
-.gb-header--contrast .gb-panel__nav,
-.gb-header--contrast .gb-header__panel--desktop,
-.gb-header--contrast .gb-header__panel--mobile {
+.iti-header--contrast .iti-header__utility,
+.iti-header--contrast .iti-header__main,
+.iti-header--contrast .iti-header-institution,
+.iti-header--contrast .gb-panel__nav,
+.iti-header--contrast .iti-header__panel--desktop,
+.iti-header--contrast .iti-header__panel--mobile {
   background: #000;
   border-color: #333;
 }
 
-.gb-header--contrast .gb-header__search {
+.iti-header--contrast .iti-header__search {
   background: #111;
   border-color: #fff;
 }
 
-.gb-header--contrast .gb-header__search input {
+.iti-header--contrast .iti-header__search input {
   color: #fff;
 }
 
-.gb-header--contrast .gb-btn--secondary {
+.iti-header--contrast .gb-btn--secondary {
   border-color: #fff;
   color: #fff;
 }
 
-.gb-header--contrast .gb-btn--primary {
+.iti-header--contrast .gb-btn--primary {
   background: #fff;
   color: #000;
 }
 
-.gb-header--contrast .gb-btn--tertiary {
+.iti-header--contrast .gb-btn--tertiary {
   color: #fff;
 }
 
-.gb-header--contrast .gb-icon-btn {
+.iti-header--contrast .gb-icon-btn {
   color: #fff;
 }
 
@@ -430,21 +410,21 @@
    Adaptação para mobile
    ========================================================================== */
 @media (max-width: 768px) {
-  .gb-header__ministry,
-  .gb-header__nav {
+  .iti-header-ministry,
+  .iti-header__nav {
     display: none;
   }
 
-  .gb-header__main {
+  .iti-header__main {
     padding: 10px 16px 14px;
     gap: 10px;
   }
 
-  .gb-header__logo {
+  .header-logo {
     order: 1;
   }
 
-  .gb-header__kebab {
+  .iti-header__kebab {
     display: block;
     order: 2;
   }
@@ -462,17 +442,17 @@
     display: none;
   }
 
-  .gb-header__institution {
+  .iti-header-institution {
     padding: 10px 16px;
     gap: 10px;
   }
 
-  .gb-header__title {
-    font-size: 15px;
+  .iti-header-title {
+    font-size: 14px;
     line-height: 1.3;
   }
 
-  .gb-header__search {
+  .iti-header__search {
     margin-left: auto;
     width: auto;
     max-width: none;
@@ -482,21 +462,21 @@
     gap: 6px;
   }
 
-  .gb-header__search input {
+  .iti-header__search input {
     display: none;
   }
 
-  .gb-header__panel--desktop {
+  .iti-header__panel--desktop {
     display: none;
   }
 
-  .gb-header__panel--mobile {
+  .iti-header__panel--mobile {
     display: block;
-    border-top: 1px solid var(--gb-border);
+    border-top: 1px solid var(--gray-5);
   }
 
   .gb-panel__nav-mobile > li {
-    border-bottom: 1px solid var(--gb-border);
+    border-bottom: 1px solid var(--gray-5);
   }
 
   .gb-panel__nav-mobile .gb-panel__nav-link {
@@ -506,7 +486,7 @@
 
   .gb-panel__links--nested {
     padding: 4px 18px 14px;
-    background: var(--gb-gray-100);
+    background: var(--gray-5);
     display: block;
   }
 
@@ -517,7 +497,7 @@
 
   .gb-panel__section {
     padding: 16px 18px;
-    border-bottom: 1px solid var(--gb-border);
+    border-bottom: 1px solid var(--gray-5);
   }
 
   .gb-panel__section-title {
@@ -525,7 +505,7 @@
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--gb-gray-500);
+    color: var(--gray-50);
   }
 
   .gb-panel__useful-links {
@@ -537,7 +517,7 @@
   .gb-panel__useful-links a {
     font-size: 14px;
     font-weight: 700;
-    color: var(--gb-blue);
+    color: var(--blue-warm-vivid-70-main);
     text-decoration: none;
   }
 
@@ -548,14 +528,14 @@
 
   .gb-panel__social-links a {
     display: inline-flex;
-    color: var(--gb-gray-700);
+    color: var(--gray-50);
   }
 
   .gb-panel__social-links a:hover {
     color: var(--gb-blue);
   }
 
-  .gb-header__a11y-fab {
+  .iti-header__a11y-fab {
     width: 48px;
     height: 48px;
     right: 14px;
