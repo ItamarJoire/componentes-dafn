@@ -1,3 +1,22 @@
+# componentes-dafn
+
+Base de componentes React + TypeScript + Vite para iniciar novos projetos.
+
+## Como usar este projeto como base
+
+Use o [degit](https://github.com/Rich-Harris/degit) via `npx` para baixar uma cópia limpa deste repositório (sem o histórico de commits) para uma nova pasta:
+
+```bash
+npx degit ItamarJoire/componentes-dafn nome-do-novo-projeto
+cd nome-do-novo-projeto
+npm install
+npm run dev
+```
+
+Depois disso, o novo diretório é um projeto independente: você pode inicializar seu próprio git (`git init`) e editar `package.json` (campo `name`) livremente.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
