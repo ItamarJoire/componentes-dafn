@@ -1,0 +1,201 @@
+.iti-footer {
+  color: var(--white);
+  background: var(--blue-warm-vivid-90);
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.iti-footer-inner {
+  width: 1126px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.iti-footer,
+.iti-footer *,
+.iti-footer *::before,
+.iti-footer *::after {
+  box-sizing: border-box;
+}
+
+.iti-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iti-footer * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Logo e colunas de links institucionais
+   ========================================================================== */
+.iti-footer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px 24px 32px;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.iti-footer-columns {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.iti-footer-column {
+  min-width: 160px;
+}
+
+.iti-footer-column-title {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.iti-footer-column a {
+  display: block;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.iti-footer-column a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Cookies, redes sociais e acesso à informação
+   ========================================================================== */
+.iti-footer-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.iti-footer-cookies {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.iti-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iti-footer-social-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.iti-footer-social ul {
+  display: flex;
+  gap: 14px;
+}
+
+.iti-footer-social a {
+  display: inline-flex;
+  color: var(--white);
+}
+
+.iti-footer-social a:hover {
+  color: var(--blue-warm-vivid-20);
+}
+
+.iti-footer-accessibility {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--blue-warm-vivid-90);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Licença de conteúdo e botão de voltar ao topo
+   ========================================================================== */
+.iti-footer-bottom {
+  position: relative;
+  padding: 16px 80px 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  text-align: center;
+}
+
+.iti-footer-top-fab {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blue-warm-vivid-70-main);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease;
+}
+
+.iti-footer-top-fab:hover {
+  background: var(--blue-warm-vivid-60);
+}
+
+/* ==========================================================================
+   Adaptação para mobile
+   ========================================================================== */
+@media (max-width: 768px) {
+  .iti-footer-main {
+    padding: 32px 16px 24px;
+    gap: 32px;
+  }
+
+  .iti-footer-secondary {
+    justify-content: flex-start;
+    padding: 16px;
+  }
+
+  .iti-footer-bottom {
+    padding: 16px 64px 16px 16px;
+  }
+}

@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   socialLinks = defaultSocialLinks,
   showAccessibilityWidget = true
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobileTopMenuOpen, setIsMobileTopMenuOpen] = useState(false)
   const [activeSectionId, setActiveSectionId] = useState(defaultActiveSectionId ?? menuSections[0]?.id)
 
