@@ -1,38 +1,7 @@
 import type { MouseEvent, ReactNode } from 'react'
+import type { MenuSection, SocialLink, SubMenuLink, TopNavLink } from '../types'
 
-export interface SubMenuLink {
-  id: string
-  label: string
-  href: string
-}
-
-export interface MenuSection {
-  id: string
-  label: string
-  href?: string
-  submenu?: SubMenuLink[]
-}
-
-export type SocialIconName = 'x' | 'youtube' | 'facebook' | 'flickr' | 'instagram'
-
-export interface SocialLink {
-  id: string
-  label: string
-  href: string
-  icon: SocialIconName
-}
-
-export interface TopNavLink {
-  id: string
-  label: string
-  href?: string
-  dropdownItems?: SubMenuLink[]
-}
-
-export interface HeaderNavProps {
-  links: TopNavLink[]
-  ariaLabel?: string
-}
+export type { MenuSection, SocialIconName, SocialLink, SubMenuLink, TopNavLink } from '../types'
 
 export type HeaderButtonVariant = 'primary' | 'secondary' | 'tertiary'
 
@@ -51,11 +20,6 @@ export interface HeaderActionsProps {
   className?: string
 }
 
-export interface HeaderSearchProps {
-  placeholder?: string
-  onSearch?: (query: string) => void
-}
-
 export interface HeaderProps {
   ministryName?: string
   institutionName?: string
@@ -69,6 +33,7 @@ export interface HeaderProps {
   entrarHref?: string
   searchPlaceholder?: string
   onSearch?: (query: string) => void
+  showMenuPanel?: boolean
   menuSections?: MenuSection[]
   defaultActiveSectionId?: string
   usefulLinksTitle?: string

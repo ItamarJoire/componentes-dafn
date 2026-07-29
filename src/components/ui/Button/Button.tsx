@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ButtonProps } from '../types.ts'
+import type { ButtonProps } from '../../types.ts'
 import styles from './Button.module.scss'
 
 export const Button: React.FC<ButtonProps> = ({
@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   children
 }) => {
-  const classes = `${styles['btn']} ${styles[`btn--${variant}`]}${className ? ` ${className}` : ''}`
+  const classes = `${styles['btn']} ${styles[`btn-${variant}`]}${className ? ` ${className}` : ''}`
 
   if (href) {
     return (

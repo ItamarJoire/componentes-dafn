@@ -1,0 +1,9 @@
+.header-nav-container {
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .header-nav-container {
+    display: none;
+  }
+}

@@ -1,0 +1,148 @@
+.desktop {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid var(--gray-5);
+}
+
+.nav {
+  width: 270px;
+  flex-shrink: 0;
+  background: var(--gray-5);
+  border-right: 1px solid var(--gray-5);
+  padding-bottom: 12px;
+}
+
+.nav-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 22px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--gray-5);
+  text-align: left;
+  font-size: 15px;
+  color: var(--gray-90);
+}
+
+.nav-link:hover {
+  background: var(--gray-10);
+}
+
+.nav-link.is-active {
+  background: var(--blue-warm-vivid-90);
+  color: var(--white);
+}
+
+.govbr {
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 4px solid var(--gray-5);
+}
+
+.content {
+  flex: 1;
+  padding: 26px 32px;
+  min-width: 0;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 32px;
+}
+
+.links li a {
+  display: block;
+  padding: 9px 0;
+  font-size: 14px;
+  color: var(--gray-50);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gray-5);
+}
+
+.links li a:hover {
+  color: var(--blue-warm-vivid-70-main);
+}
+
+.empty {
+  color: var(--gray-50);
+  font-size: 14px;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    border-top: 1px solid var(--gray-5);
+  }
+
+  .nav-mobile > li {
+    border-bottom: 1px solid var(--gray-5);
+  }
+
+  .nav-mobile .nav-link {
+    padding: 14px 18px;
+    border-bottom: none;
+  }
+
+  .links-nested {
+    padding: 4px 18px 14px;
+    background: var(--gray-5);
+    display: block;
+  }
+
+  .links-nested li a {
+    padding: 8px 4px;
+    font-size: 13.5px;
+  }
+
+  .section {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--gray-5);
+  }
+
+  .section-title {
+    margin: 0 0 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-50);
+  }
+
+  .useful-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .useful-links a {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue-warm-vivid-70-main);
+    text-decoration: none;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    color: var(--gray-50);
+  }
+
+  .social-links a:hover {
+    color: var(--gb-blue);
+  }
+}

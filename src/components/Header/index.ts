@@ -1,6 +1,3 @@
 export { Header } from './Header'
-export { HeaderButtonContainer } from './HeaderButtonContainer'
-export { default as HeaderNav } from './HeaderNav'
-export { default as HeaderSearch } from './HeaderSearch'
+export { HeaderButtonContainer, HeaderNavContainer, HeaderSearchContainer } from './componentes'
 export * from './types'
-export { defaultTopNavLinks, defaultMenuSections, defaultUsefulLinks, defaultSocialLinks } from './defaultData'

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { HeaderActionsProps } from './types'
+import type { HeaderActionsProps } from '../types'
 import styles from './HeaderButtonContainer.module.scss'
 
 export const HeaderButtonContainer: React.FC<HeaderActionsProps> = ({ children, className = '' }) => {

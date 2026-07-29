@@ -1,18 +1,4 @@
-import type { MenuSection, SocialLink, SubMenuLink, TopNavLink } from './types.ts'
-
-export const defaultTopNavLinks: TopNavLink[] = [
-  {
-    id: 'institucional',
-    label: 'Institucional',
-    dropdownItems: [
-      { id: 'quem-somos', label: 'Quem somos', href: '#' },
-      { id: 'estrutura', label: 'Estrutura organizacional', href: '#' },
-      { id: 'legislacao', label: 'Legislação', href: '#' }
-    ]
-  },
-  { id: 'acessibilidade', label: 'Acessibilidade', href: '#' },
-  { id: 'participe', label: 'Participe', href: '#' }
-]
+import type { MenuSection, SocialLink, SubMenuLink } from '../../types'
 
 const assuntosSubmenu: SubMenuLink[] = [
   { id: 'auditoria-icp', label: 'Auditoria ICP-Brasil', href: '#' },

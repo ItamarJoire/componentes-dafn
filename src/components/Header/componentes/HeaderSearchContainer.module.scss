@@ -1,0 +1,14 @@
+.header-search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  width: 100%;
+  max-width: 420px;
+}
+
+@media (max-width: 768px) {
+  .header-search-container {
+    width: auto;
+    max-width: none;
+  }
+}
