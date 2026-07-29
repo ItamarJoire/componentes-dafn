@@ -92,7 +92,6 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .iti-footer-cookies {
@@ -115,6 +114,7 @@
 
 .iti-footer-social-title {
   margin: 0;
+  color: var(--white);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -153,7 +153,7 @@
    ========================================================================== */
 .iti-footer-bottom {
   position: relative;
-  padding: 16px 80px 16px 24px;
+  padding: 20px 80px 20px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 13px;
   text-align: center;
@@ -162,7 +162,7 @@
 .iti-footer-top-fab {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 10px;
   transform: translateY(-50%);
   display: flex;
   align-items: center;

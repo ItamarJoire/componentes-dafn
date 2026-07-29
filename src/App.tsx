@@ -6,7 +6,7 @@ function App() {
   return (
     <div className={styles['app-wrapper']}>
       <Header />
-      <main className={styles['app-main']} style={{ padding: 24 }}>
+      <main className={styles['app-main']} style={{ padding: 32 }}>
         <p>
           Conteúdo da página... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. What is Lorem Ipsum?

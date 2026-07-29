@@ -31,7 +31,7 @@ export const Nav: React.FC<NavProps> = ({ links, ariaLabel = 'Menu institucional
                 onClick={() => setOpenId(current => (current === link.id ? null : link.id))}
               >
                 {link.label}
-                <FontAwesomeIcon icon={faChevronDown} style={{ width: 14, height: 14 }} />
+                <FontAwesomeIcon icon={faChevronDown} style={{ width: 12, height: 12 }} />
               </button>
               {openId === link.id && (
                 <ul className={styles['nav-dropdown']}>

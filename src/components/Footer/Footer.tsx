@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faChevronUp, faCircleInfo, faCookieBite } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faFlickr, faInstagram, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import type { FooterProps, SocialIconName } from './types'
 import { defaultFooterColumns, defaultFooterSocialLinks } from './defaultData'
@@ -18,14 +18,10 @@ const socialIcons: Record<SocialIconName, IconDefinition> = {
 export const Footer: React.FC<FooterProps> = ({
   logoHref = '/',
   columns = defaultFooterColumns,
-  cookiesLabel = 'Redefinir Cookies',
-  onResetCookies,
   socialLinksTitle = 'Redes Sociais',
   socialLinks = defaultFooterSocialLinks,
-  accessibilityLabel = 'Acesso à Informação',
-  accessibilityHref = '#',
-  licenseText = 'Todo o conteúdo deste site está publicado sob a licença',
-  licenseName = 'Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada.'
+  licenseText = 'Instituto Nacional de Tecnologia da Informação - ITI. ',
+  licenseName = 'Direitos reservados'
 }) => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -58,11 +54,6 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Cookies, redes sociais e acesso à informação */}
         <div className={styles['iti-footer-secondary']}>
-          <button type="button" className={styles['iti-footer-cookies']} onClick={onResetCookies}>
-            <FontAwesomeIcon icon={faCookieBite} style={{ width: 18, height: 18 }} />
-            {cookiesLabel}
-          </button>
-
           <div className={styles['iti-footer-social']}>
             <h2 className={styles['iti-footer-social-title']}>{socialLinksTitle}</h2>
             <ul>
@@ -75,11 +66,6 @@ export const Footer: React.FC<FooterProps> = ({
               ))}
             </ul>
           </div>
-
-          <a href={accessibilityHref} className={styles['iti-footer-accessibility']}>
-            <FontAwesomeIcon icon={faCircleInfo} style={{ width: 20, height: 20 }} />
-            {accessibilityLabel}
-          </a>
         </div>
 
         {/* Licença de conteúdo e botão de voltar ao topo */}

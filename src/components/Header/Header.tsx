@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faEllipsisVertical, faHandsAslInterpreting, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faEllipsisVertical, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import type { HeaderProps } from './types'
 import {
   Button,
@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({
   logoHref = '/',
   topNavLinks = defaultTopNavLinks,
   entrarShortLabel = 'Entrar',
-  entrarSuffix = ' com GOV.BR',
+  entrarSuffix = ' com gov.br',
   entrarHref = '#',
   searchPlaceholder = 'O que você procura?',
   onSearch,
@@ -32,8 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
   usefulLinksTitle = 'Links Úteis',
   usefulLinks = defaultUsefulLinks,
   socialLinksTitle = 'Redes Sociais',
-  socialLinks = defaultSocialLinks,
-  showAccessibilityWidget = true
+  socialLinks = defaultSocialLinks
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobileTopMenuOpen, setIsMobileTopMenuOpen] = useState(false)
@@ -142,13 +141,6 @@ export const Header: React.FC<HeaderProps> = ({
           socialLinksTitle={socialLinksTitle}
           socialLinks={socialLinks}
         />
-      )}
-
-      {/* Botão flutuante de acessibilidade */}
-      {showAccessibilityWidget && (
-        <button type="button" className={styles['iti-header-a11y-fab']} aria-label="Acessibilidade em Libras">
-          <FontAwesomeIcon icon={faHandsAslInterpreting} style={{ width: 24, height: 24 }} />
-        </button>
       )}
     </header>
   )
