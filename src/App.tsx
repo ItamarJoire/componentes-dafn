@@ -1,9 +1,9 @@
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
+import { Header } from './ui/Header'
+import { Footer } from './ui/Footer'
 import styles from './App.module.scss'
-import { LoginForm } from './features/LoginForm'
-import { Accordion } from './components/ui'
-import type { AccordionItem } from './components/types'
+import { LoginForm } from './components/LoginForm'
+import { Accordion, PageTitle } from './ui'
+import type { AccordionItem } from './ui/Accordion/types'
 
 const items: AccordionItem[] = [
   {
@@ -28,12 +28,12 @@ const items: AccordionItem[] = [
   }
 ]
 
-
 function App() {
   return (
     <div className={styles['app-wrapper']}>
+      <PageTitle title="Página principal" />
       <Header />
-      <main className={styles['app-main']} style={{ padding: 32 }}>
+      <main className={styles['app-main']} style={{ padding: '40px 0' }}>
         <Accordion items={items} />
         <LoginForm onSubmit={values => console.log('LoginForm submitted with values:', values)} />
         <p>
