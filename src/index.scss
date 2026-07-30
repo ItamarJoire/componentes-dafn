@@ -1,5 +1,8 @@
 :root {
   --bg: #fff;
+  --surface: #fff;
+  --text: #333;
+  --footer-bg: #071d41;
 
   // Textos
   --white: #fff;
@@ -75,6 +78,15 @@
   -moz-osx-font-smoothing: grayscale;
 
   font-size: 62.5%;
+}
+
+:root[data-theme='dark'] {
+  --bg: var(--gray-90);
+  --surface: var(--gray-80-main);
+  --text: var(--gray-5);
+  --footer-bg: var(--gray-90);
+  color: var(--text);
+  background: var(--bg);
 }
 
 #root {
