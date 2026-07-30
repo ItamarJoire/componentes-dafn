@@ -5,3 +5,5 @@ export { MenuPanel, defaultMenuSections, defaultSocialLinks, defaultUsefulLinks 
 export { Nav, defaultTopNavLinks } from './Nav'
 export { PageTitle } from './PageTitle'
 export { Search } from './Search'
+export { Table } from './Table'
+export { Upload } from './Upload'
