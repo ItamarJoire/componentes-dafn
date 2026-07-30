@@ -1,8 +1,8 @@
 :root {
   --bg: #fff;
-  --surface: #fff;
-  --text: #333;
-  --footer-bg: #071d41;
+  --surface: var(--white);
+  --surface-text: var(--gray-90);
+  --footer-surface: var(--blue-warm-vivid-90);
 
   // Textos
   --white: #fff;
@@ -83,9 +83,9 @@
 :root[data-theme='dark'] {
   --bg: var(--gray-90);
   --surface: var(--gray-80-main);
-  --text: var(--gray-5);
-  --footer-bg: var(--gray-90);
-  color: var(--text);
+  --surface-text: var(--gray-5);
+  --footer-surface: var(--gray-90);
+  color: var(--gray-5);
   background: var(--bg);
 }
 
