@@ -30,7 +30,6 @@ export const Table = <T,>({
   className = ''
 }: TableProps<T>) => {
   const [selectedIds, setSelectedIds] = useState<string[]>([])
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [showCheckboxes, setShowCheckboxes] = useState(true)
 
@@ -80,26 +79,25 @@ export const Table = <T,>({
         {title && <h2 className={styles['table-title']}>{title}</h2>}
 
         <div className={styles['table-header-actions']}>
-          {isSearchOpen && (
-            <form role="search" onSubmit={handleSearchSubmit}>
+          <form role="search" className={styles['search-form']} onSubmit={handleSearchSubmit}>
+            <div className={styles['search-field']}>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className={styles['search-field-icon']}
+                style={{ width: 14, height: 14 }}
+              />
               <input
                 type="search"
                 value={searchValue}
                 onChange={event => setSearchValue(event.target.value)}
                 placeholder="Buscar"
                 aria-label="Buscar"
-                autoFocus
               />
-            </form>
-          )}
-          <button
-            type="button"
-            className={styles['icon-btn']}
-            aria-label="Buscar"
-            onClick={() => setIsSearchOpen(current => !current)}
-          >
-            <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: 18, height: 18 }} />
-          </button>
+            </div>
+            <button type="submit" className={styles['search-submit']}>
+              Buscar
+            </button>
+          </form>
           {selectable && (
             <button
               type="button"

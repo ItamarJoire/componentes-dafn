@@ -28,19 +28,49 @@
   form {
     display: flex;
     align-items: center;
+    gap: 8px;
+  }
+}
 
-    input {
-      border: 1px solid var(--gray-20);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 14px;
-      color: var(--gray-80-main);
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
 
-      &:focus {
-        outline: 2px solid var(--blue-warm-vivid-40);
-        outline-offset: 1px;
-      }
+  input {
+    border: 1px solid var(--gray-20);
+    border-radius: 999px;
+    padding: 6px 12px 6px 32px;
+    font-size: 14px;
+    color: var(--gray-80-main);
+
+    &:focus {
+      outline: 2px solid var(--blue-warm-vivid-40);
+      outline-offset: 1px;
     }
+  }
+}
+
+.search-field-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--gray-40);
+  pointer-events: none;
+}
+
+.search-submit {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  background: var(--blue-warm-vivid-70-main);
+  color: var(--white);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--blue-warm-vivid-80);
   }
 }
 
