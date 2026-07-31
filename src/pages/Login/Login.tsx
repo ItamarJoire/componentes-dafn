@@ -1,214 +1,92 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { PageTitle, Table } from '../../ui'
-import type { TableColumn } from '../../ui/Table/types'
-import styles from './Login.module.scss'
+import { Table } from '../../ui'
 
-// Interface para cada linha de dado
-interface RowData {
+interface Usuario {
   id: string
-  name: string
+  nome: string
   email: string
-  role: string
-  status: 'Ativo' | 'Inativo' | 'Pendente'
-  createdAt: string
+  perfil: 'Administrador' | 'Editor' | 'Visualizador'
 }
 
-// Definição das colunas da tabela
-const columns: TableColumn<RowData>[] = [
-  { key: 'id', label: 'ID' },
-  { key: 'name', label: 'Nome' },
-  { key: 'email', label: 'E-mail' },
-  { key: 'role', label: 'Cargo' },
-  { key: 'status', label: 'Status' },
-  { key: 'createdAt', label: 'Data de Criação' }
-]
-
-// Lista com nomes fictícios para cada linha
-const demoRows: RowData[] = [
-  {
-    id: '1',
-    name: 'Ana Silva',
-    email: 'ana.silva@empresa.com',
-    role: 'Desenvolvedora Frontend',
-    status: 'Ativo',
-    createdAt: '10/01/2026'
-  },
-  {
-    id: '2',
-    name: 'Carlos Oliveira',
-    email: 'carlos.oliveira@empresa.com',
-    role: 'Gerente de Projetos',
-    status: 'Ativo',
-    createdAt: '15/01/2026'
-  },
-  {
-    id: '3',
-    name: 'Mariana Santos',
-    email: 'mariana.santos@empresa.com',
-    role: 'UX/UI Designer',
-    status: 'Pendente',
-    createdAt: '22/02/2026'
-  },
-  {
-    id: '4',
-    name: 'Lucas Ferreira',
-    email: 'lucas.ferreira@empresa.com',
-    role: 'Engenheiro Backend',
-    status: 'Ativo',
-    createdAt: '03/03/2026'
-  },
-  {
-    id: '5',
-    name: 'Beatriz Costa',
-    email: 'beatriz.costa@empresa.com',
-    role: 'Analista de Dados',
-    status: 'Inativo',
-    createdAt: '18/04/2026'
-  },
-  {
-    id: '6',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '7',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '8',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '9',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '10',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '11',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '12',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '13',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '14',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '15',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  },
-  {
-    id: '16',
-    name: 'Rafael Almeida',
-    email: 'rafael.almeida@empresa.com',
-    role: 'DevOps Engineer',
-    status: 'Ativo',
-    createdAt: '05/05/2026'
-  }
+const usuarios: Usuario[] = [
+  { id: '1', nome: 'Ana Souza', email: 'ana.souza@exemplo.gov.br', perfil: 'Administrador' },
+  { id: '2', nome: 'Bruno Lima', email: 'bruno.lima@exemplo.gov.br', perfil: 'Editor' },
+  { id: '3', nome: 'Carla Mendes', email: 'carla.mendes@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '4', nome: 'Diego Alves', email: 'diego.alves@exemplo.gov.br', perfil: 'Editor' },
+  { id: '5', nome: 'Elaine Costa', email: 'elaine.costa@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '6', nome: 'Fábio Rocha', email: 'fabio.rocha@exemplo.gov.br', perfil: 'Administrador' },
+  { id: '7', nome: 'Gabriela Dias', email: 'gabriela.dias@exemplo.gov.br', perfil: 'Editor' },
+  { id: '8', nome: 'Hugo Martins', email: 'hugo.martins@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '9', nome: 'Igor Barbosa', email: 'igor.barbosa@exemplo.gov.br', perfil: 'Editor' },
+  { id: '10', nome: 'Juliana Ramos', email: 'juliana.ramos@exemplo.gov.br', perfil: 'Administrador' },
+  { id: '11', nome: 'Kleber Nunes', email: 'kleber.nunes@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '12', nome: 'Larissa Pinto', email: 'larissa.pinto@exemplo.gov.br', perfil: 'Editor' },
+  { id: '13', nome: 'Marcelo Teixeira', email: 'marcelo.teixeira@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '14', nome: 'Natália Freitas', email: 'natalia.freitas@exemplo.gov.br', perfil: 'Administrador' },
+  { id: '15', nome: 'Otávio Correia', email: 'otavio.correia@exemplo.gov.br', perfil: 'Editor' },
+  { id: '16', nome: 'Patrícia Gomes', email: 'patricia.gomes@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '17', nome: 'Rodrigo Cardoso', email: 'rodrigo.cardoso@exemplo.gov.br', perfil: 'Administrador' },
+  { id: '18', nome: 'Sabrina Moura', email: 'sabrina.moura@exemplo.gov.br', perfil: 'Editor' },
+  { id: '19', nome: 'Thiago Farias', email: 'thiago.farias@exemplo.gov.br', perfil: 'Visualizador' },
+  { id: '20', nome: 'Vanessa Pires', email: 'vanessa.pires@exemplo.gov.br', perfil: 'Administrador' }
 ]
 
 export const Login = () => {
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(5)
+  const [pageSize, setPageSize] = useState(10)
+  const [search, setSearch] = useState('')
 
-  // Cálculo para a paginação
-  const paginatedRows = demoRows.slice((page - 1) * pageSize, page * pageSize)
+  const filtrados = useMemo(() => usuarios.filter(u => u.nome.toLowerCase().includes(search.toLowerCase())), [search])
+
+  const paginaAtual = useMemo(() => {
+    const inicio = (page - 1) * pageSize
+    return filtrados.slice(inicio, inicio + pageSize)
+  }, [filtrados, page, pageSize])
 
   return (
-    <div className={styles['login']}>
-      <PageTitle title="Login" />
-      <h2>
-        {' '}
-        <a href="/">Voltar para Home</a>
-      </h2>
-
-      <Table
-        title="Usuários do Sistema"
-        columns={columns}
-        data={paginatedRows}
-        getRowId={row => row.id}
-        selectable
-        rowActions={[
-          {
-            label: 'Visualizar',
-            icon: <FontAwesomeIcon icon={faEye} style={{ width: 16, height: 16 }} />,
-            onClick: row => console.log('Visualizar', row)
-          },
-          {
-            label: 'Editar',
-            icon: <FontAwesomeIcon icon={faPenToSquare} style={{ width: 16, height: 16 }} />,
-            onClick: row => console.log('Editar', row)
-          },
-          {
-            label: 'Excluir',
-            icon: <FontAwesomeIcon icon={faTrash} style={{ width: 16, height: 16 }} />,
-            onClick: row => console.log('Excluir', row)
-          }
-        ]}
-        onSearch={query => console.log('Buscar', query)}
-        onDelete={ids => console.log('Excluir selecionados', ids)}
-        onDownload={ids => console.log('Download selecionados', ids)}
-        pagination={{
-          page,
-          pageSize,
-          totalItems: demoRows.length,
-          onPageChange: setPage,
-          onPageSizeChange: size => {
-            setPageSize(size)
-            setPage(1)
-          }
-        }}
-      />
-    </div>
+    <Table
+      title="Usuários"
+      columns={[
+        { key: 'nome', label: 'Nome' },
+        { key: 'email', label: 'E-mail' },
+        { key: 'perfil', label: 'Perfil', align: 'center' }
+      ]}
+      data={paginaAtual}
+      getRowId={row => row.id}
+      selectable
+      rowActions={[
+        {
+          label: 'Visualizar',
+          icon: <FontAwesomeIcon icon={faEye} style={{ width: 16, height: 16 }} />,
+          onClick: row => console.log('Visualizar', row)
+        },
+        {
+          label: 'Editar',
+          icon: <FontAwesomeIcon icon={faPenToSquare} style={{ width: 16, height: 16 }} />,
+          onClick: row => console.log('Editar', row)
+        },
+        {
+          label: 'Excluir',
+          icon: <FontAwesomeIcon icon={faTrash} style={{ width: 16, height: 16 }} />,
+          onClick: row => console.log('Excluir', row)
+        }
+      ]}
+      onSearch={query => {
+        setSearch(query)
+        setPage(1)
+      }}
+      pagination={{
+        page,
+        pageSize,
+        totalItems: filtrados.length,
+        onPageChange: setPage,
+        onPageSizeChange: size => {
+          setPageSize(size)
+          setPage(1)
+        }
+      }}
+    />
   )
 }
