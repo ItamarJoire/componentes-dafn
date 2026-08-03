@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
 import { Header } from './ui/Header'
 import { Footer } from './ui/Footer'
 import styles from './App.module.scss'
@@ -18,7 +18,7 @@ export const App = () => {
           aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
           onClick={toggleTheme}
         >
-          <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} style={{ width: 16, height: 16 }} />
+          <FontAwesomeIcon icon={faCircleHalfStroke} style={{ width: 14, height: 14 }} />
         </button>
       </div>
       <Header />

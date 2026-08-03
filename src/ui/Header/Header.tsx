@@ -2,8 +2,17 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faEllipsisVertical, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import type { HeaderProps } from './types'
-import { Button, MenuPanel, defaultMenuSections, defaultSocialLinks, defaultTopNavLinks, defaultUsefulLinks } from '..'
-import { HeaderButtonContainer } from './containers'
+import {
+  Button,
+  MenuPanel,
+  Nav,
+  Search,
+  defaultMenuSections,
+  defaultSocialLinks,
+  defaultTopNavLinks,
+  defaultUsefulLinks
+} from '..'
+import { HeaderButtonContainer, HeaderNavContainer, HeaderSearchContainer } from './containers'
 import styles from './Header.module.scss'
 
 export const Header: React.FC<HeaderProps> = ({
@@ -15,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({
   entrarShortLabel = 'Entrar',
   entrarSuffix = ' com gov.br',
   entrarHref = '#',
-  showMenuPanel = false,
+  showMenuPanel = true,
   menuSections = defaultMenuSections,
   defaultActiveSectionId,
   usefulLinksTitle = 'Links Úteis',
@@ -26,6 +35,9 @@ export const Header: React.FC<HeaderProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobileTopMenuOpen, setIsMobileTopMenuOpen] = useState(false)
   const [activeSectionId, setActiveSectionId] = useState(defaultActiveSectionId ?? menuSections[0]?.id)
+  const handleSearch = (searchTerm: string) => {
+    console.log('Search term:', searchTerm)
+  }
 
   const kebabRef = useRef<HTMLDivElement>(null)
 
@@ -57,6 +69,11 @@ export const Header: React.FC<HeaderProps> = ({
         </a>
 
         <p className={styles['iti-header-ministry']}>{ministryName}</p>
+
+        {/* CASO NÃO QUEIRA A NAVEGAÇÃO, REMOVA O COMPONENTE ABAIXO */}
+        <HeaderNavContainer>
+          <Nav links={topNavLinks} />
+        </HeaderNavContainer>
 
         <HeaderButtonContainer>
           <Button
@@ -110,6 +127,11 @@ export const Header: React.FC<HeaderProps> = ({
           <h1 className={styles['iti-header-title']}>{institutionName}</h1>
           <p className={styles['iti-header-paragh']}>{systemName}</p>
         </div>
+
+        {/* CASO NÃO QUEIRA A BARRA DE BUSCA, REMOVA O COMPONENTE ABAIXO */}
+        <HeaderSearchContainer>
+          <Search placeholder="O que você procura?" onSearch={handleSearch} />
+        </HeaderSearchContainer>
       </div>
 
       {showMenuPanel && isMenuOpen && (

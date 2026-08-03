@@ -7,6 +7,8 @@ export interface ButtonProps {
   variant?: ButtonVariant
   /** Se informado, o botão vira um link (<a>); senão, vira um <button>. */
   href?: string
+  /** Valor do atributo target do link (ex: '_blank' para abrir em nova aba). */
+  target?: string
   /** Ícone exibido antes do texto (ex: <FontAwesomeIcon icon={faUser} />). */
   icon?: ReactNode
   onClick?: (event: MouseEvent<HTMLElement>) => void

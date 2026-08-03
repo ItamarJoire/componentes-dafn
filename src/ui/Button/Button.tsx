@@ -5,6 +5,7 @@ import styles from './Button.module.scss'
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   href,
+  target,
   icon,
   onClick,
   ariaLabel,
@@ -15,7 +16,14 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <a className={classes} href={href} onClick={onClick} aria-label={ariaLabel}>
+      <a
+        className={classes}
+        href={href}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        onClick={onClick}
+        aria-label={ariaLabel}
+      >
         {icon}
         <span>{children}</span>
       </a>

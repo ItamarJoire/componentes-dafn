@@ -45,7 +45,13 @@ export const defaultFooterColumns: FooterColumn[] = [
   {
     id: 'endereco',
     title: 'Endereço',
-    links: []
+    links: [
+      {
+        id: 'endereco-link',
+        label: 'SCS Quadra 06, Bloco A, Ed. Parque Cidade Corporate, 2º andar, Brasília/DF - CEP: 70308-200',
+        href: '#'
+      }
+    ]
   }
 ]
 
