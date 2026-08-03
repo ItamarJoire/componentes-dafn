@@ -6,7 +6,7 @@ import styles from './App.module.scss'
 import { AppRoutes } from './routes'
 import { useTheme } from './contexts'
 
-function App() {
+export const App = () => {
   const { theme, toggleTheme } = useTheme()
 
   return (
@@ -29,5 +29,3 @@ function App() {
     </div>
   )
 }
-
-export default App
