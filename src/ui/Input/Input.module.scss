@@ -49,9 +49,10 @@
 }
 
 .input-wrapper textarea {
-  resize: vertical;
-  min-height: 80px;
+  resize: none;
+  height: 80px;
   line-height: 145%;
+  overflow-y: auto;
 }
 
 .input-wrapper select {

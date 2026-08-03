@@ -2,17 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faEllipsisVertical, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import type { HeaderProps } from './types'
-import {
-  Button,
-  MenuPanel,
-  Nav,
-  Search,
-  defaultMenuSections,
-  defaultSocialLinks,
-  defaultTopNavLinks,
-  defaultUsefulLinks
-} from '..'
-import { HeaderButtonContainer, HeaderNavContainer, HeaderSearchContainer } from './containers'
+import { Button, MenuPanel, defaultMenuSections, defaultSocialLinks, defaultTopNavLinks, defaultUsefulLinks } from '..'
+import { HeaderButtonContainer } from './containers'
 import styles from './Header.module.scss'
 
 export const Header: React.FC<HeaderProps> = ({
@@ -24,9 +15,7 @@ export const Header: React.FC<HeaderProps> = ({
   entrarShortLabel = 'Entrar',
   entrarSuffix = ' com gov.br',
   entrarHref = '#',
-  searchPlaceholder = 'O que você procura?',
-  onSearch,
-  showMenuPanel = true,
+  showMenuPanel = false,
   menuSections = defaultMenuSections,
   defaultActiveSectionId,
   usefulLinksTitle = 'Links Úteis',
@@ -68,10 +57,6 @@ export const Header: React.FC<HeaderProps> = ({
         </a>
 
         <p className={styles['iti-header-ministry']}>{ministryName}</p>
-
-        <HeaderNavContainer>
-          <Nav links={topNavLinks} />
-        </HeaderNavContainer>
 
         <HeaderButtonContainer>
           <Button
@@ -125,10 +110,6 @@ export const Header: React.FC<HeaderProps> = ({
           <h1 className={styles['iti-header-title']}>{institutionName}</h1>
           <p className={styles['iti-header-paragh']}>{systemName}</p>
         </div>
-
-        <HeaderSearchContainer>
-          <Search placeholder={searchPlaceholder} onSearch={onSearch} />
-        </HeaderSearchContainer>
       </div>
 
       {showMenuPanel && isMenuOpen && (
