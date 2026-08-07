@@ -48,7 +48,7 @@ export const defaultFooterColumns: FooterColumn[] = [
     links: [
       {
         id: 'endereco-link',
-        label: 'SCS Quadra 06, Bloco A, Ed. Parque Cidade Corporate, 2º andar, Brasília/DF - CEP: 70308-200',
+        label: 'Setor de Autarquias Sul – SAUS Quadra 06 BL E. Complexo Anatel CEP 70070-940 – Brasília/DF',
         href: '#'
       }
     ]

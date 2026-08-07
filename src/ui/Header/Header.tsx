@@ -1,17 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faEllipsisVertical, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faCircleHalfStroke, faEllipsisVertical, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import type { HeaderProps } from './types'
-import {
-  Button,
-  MenuPanel,
-  Nav,
-  Search,
-  defaultMenuSections,
-  defaultSocialLinks,
-  defaultTopNavLinks,
-  defaultUsefulLinks
-} from '..'
+import { Button, Nav, Search, defaultTopNavLinks } from '..'
+import { useTheme } from '../../contexts'
 import { HeaderButtonContainer, HeaderNavContainer, HeaderSearchContainer } from './containers'
 import styles from './Header.module.scss'
 
@@ -25,16 +17,11 @@ export const Header: React.FC<HeaderProps> = ({
   entrarSuffix = ' com gov.br',
   entrarHref = '#',
   showMenuPanel = true,
-  menuSections = defaultMenuSections,
-  defaultActiveSectionId,
-  usefulLinksTitle = 'Links Úteis',
-  usefulLinks = defaultUsefulLinks,
-  socialLinksTitle = 'Redes Sociais',
-  socialLinks = defaultSocialLinks
+  isMenuOpen = false,
+  onMenuToggleClick
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
   const [isMobileTopMenuOpen, setIsMobileTopMenuOpen] = useState(false)
-  const [activeSectionId, setActiveSectionId] = useState(defaultActiveSectionId ?? menuSections[0]?.id)
   const handleSearch = (searchTerm: string) => {
     console.log('Search term:', searchTerm)
   }
@@ -52,14 +39,6 @@ export const Header: React.FC<HeaderProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const handleMenuToggleClick = () => {
-    setIsMenuOpen(v => !v)
-  }
-
-  const handleSectionSelect = (sectionId: string) => {
-    setActiveSectionId(sectionId)
-  }
-
   return (
     <header className={styles['iti-header']}>
       {/* Barra principal: logo, navegação institucional e ações */}
@@ -74,6 +53,17 @@ export const Header: React.FC<HeaderProps> = ({
         <HeaderNavContainer>
           <Nav links={topNavLinks} />
         </HeaderNavContainer>
+
+        <span className={styles['iti-header-divider']} aria-hidden="true" />
+
+        <button
+          type="button"
+          className={`${styles['icon-btn']} ${styles['iti-header-theme-toggle']}`}
+          aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+          onClick={toggleTheme}
+        >
+          <FontAwesomeIcon icon={faCircleHalfStroke} style={{ width: 16, height: 16 }} />
+        </button>
 
         <HeaderButtonContainer>
           <Button
@@ -117,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({
             className={`${styles['icon-btn']} ${styles['iti-header-menu-toggle']}`}
             aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={isMenuOpen}
-            onClick={handleMenuToggleClick}
+            onClick={onMenuToggleClick}
           >
             <FontAwesomeIcon icon={isMenuOpen ? faXmark : faBars} style={{ width: 20, height: 18 }} />
           </button>
@@ -133,18 +123,6 @@ export const Header: React.FC<HeaderProps> = ({
           <Search placeholder="O que você procura?" onSearch={handleSearch} />
         </HeaderSearchContainer>
       </div>
-
-      {showMenuPanel && isMenuOpen && (
-        <MenuPanel
-          menuSections={menuSections}
-          activeSectionId={activeSectionId}
-          onSectionSelect={handleSectionSelect}
-          usefulLinksTitle={usefulLinksTitle}
-          usefulLinks={usefulLinks}
-          socialLinksTitle={socialLinksTitle}
-          socialLinks={socialLinks}
-        />
-      )}
     </header>
   )
 }

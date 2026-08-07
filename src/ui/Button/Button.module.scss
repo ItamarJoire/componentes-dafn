@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 7px 18px;
+  padding: 8px 18px;
   border-radius: 999px;
   font-size: 16px;
   font-weight: 700;
@@ -44,7 +44,7 @@
 }
 
 .btn-tertiary {
-  background: transparent;
+  background: var(--gray-2);
   color: var(--blue-warm-vivid-70-main);
   border-color: transparent;
 
@@ -55,6 +55,6 @@
 }
 
 .btn-tertiary:hover {
-  background: transparent;
+  // background: transparent;
   text-decoration: underline;
 }

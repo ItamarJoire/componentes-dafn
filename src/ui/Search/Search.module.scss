@@ -6,13 +6,13 @@
   padding: 4px 8px 4px 18px;
   background: var(--gray-5);
   border: 1px solid var(--gray-5);
-  border-radius: 999px;
+  border-radius: 8px;
 }
 
 .search input {
   flex: 1;
   min-width: 0;
-  padding: 7px 0;
+  padding: 12px 0;
   border: none;
   background: transparent;
   font-size: 14px;
@@ -34,7 +34,7 @@
   border-radius: 50%;
   border: none;
   background: transparent;
-  color: var(--gray-50);
+  color: var(--blue-warm-vivid-70-main);
   transition:
     background 0.15s ease,
     color 0.15s ease;

@@ -1,6 +1,4 @@
-import type { SubMenuLink } from '../Nav/types'
-
-export type { SubMenuLink } from '../Nav/types'
+import type { ReactNode } from 'react'
 
 export type SocialIconName = 'x' | 'youtube' | 'facebook' | 'flickr' | 'instagram'
 
@@ -11,19 +9,23 @@ export interface SocialLink {
   icon: SocialIconName
 }
 
+export interface MenuPanelItem {
+  id: string
+  label: string
+  href: string
+  icon?: ReactNode
+}
+
 export interface MenuSection {
   id: string
   label: string
+  icon?: ReactNode
   href?: string
-  submenu?: SubMenuLink[]
+  submenu?: MenuPanelItem[]
 }
 
 export interface MenuPanelProps {
   menuSections: MenuSection[]
-  activeSectionId?: string
-  onSectionSelect: (sectionId: string) => void
-  usefulLinksTitle?: string
-  usefulLinks?: SubMenuLink[]
-  socialLinksTitle?: string
-  socialLinks?: SocialLink[]
+  openSectionIds?: string[]
+  onSectionToggle: (sectionId: string) => void
 }

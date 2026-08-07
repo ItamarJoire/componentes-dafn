@@ -1,7 +1,7 @@
 export { Accordion } from './Accordion'
 export { Button } from './Button'
 export { Input } from './Input'
-export { MenuPanel, defaultMenuSections, defaultSocialLinks, defaultUsefulLinks } from './MenuPanel'
+export { MenuPanel, defaultMenuSections } from './MenuPanel'
 export { Nav, defaultTopNavLinks } from './Nav'
 export { PageTitle } from './PageTitle'
 export { Search } from './Search'

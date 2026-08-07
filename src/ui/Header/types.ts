@@ -1,8 +1,6 @@
 import type { MouseEvent, ReactNode } from 'react'
-import type { MenuSection, SocialLink } from '../MenuPanel/types'
-import type { SubMenuLink, TopNavLink } from '../Nav/types'
+import type { TopNavLink } from '../Nav/types'
 
-export type { MenuSection, SocialIconName, SocialLink } from '../MenuPanel/types'
 export type { SubMenuLink, TopNavLink } from '../Nav/types'
 
 export type HeaderButtonVariant = 'primary' | 'secondary' | 'tertiary'
@@ -36,11 +34,7 @@ export interface HeaderProps {
   searchPlaceholder?: string
   onSearch?: (query: string) => void
   showMenuPanel?: boolean
-  menuSections?: MenuSection[]
-  defaultActiveSectionId?: string
-  usefulLinksTitle?: string
-  usefulLinks?: SubMenuLink[]
-  socialLinksTitle?: string
-  socialLinks?: SocialLink[]
+  isMenuOpen?: boolean
+  onMenuToggleClick?: () => void
   showAccessibilityWidget?: boolean
 }

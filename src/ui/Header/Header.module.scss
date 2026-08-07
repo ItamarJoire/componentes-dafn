@@ -37,7 +37,7 @@
   border-radius: 50%;
   border: none;
   background: transparent;
-  color: var(--gray-50);
+  color: var(--blue-warm-vivid-70-main);
   transition:
     background 0.15s ease,
     color 0.15s ease;
@@ -91,6 +91,13 @@
   line-height: 1.3;
   color: var(--gray-50);
   max-width: 260px;
+}
+
+.iti-header-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 24px;
+  background: var(--gray-5);
 }
 
 .iti-header-kebab {
@@ -193,9 +200,17 @@
     order: 1;
   }
 
+  .iti-header-theme-toggle {
+    order: 2;
+  }
+
   .iti-header-kebab {
     display: block;
-    order: 2;
+    order: 4;
+  }
+
+  .iti-header-divider {
+    display: none;
   }
 
   .logo {

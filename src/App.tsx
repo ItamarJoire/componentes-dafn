@@ -1,30 +1,40 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
 import { Header } from './ui/Header'
 import { Footer } from './ui/Footer'
+import { MenuPanel, defaultMenuSections } from './ui/MenuPanel'
 import styles from './App.module.scss'
 import { AppRoutes } from './routes'
-import { useTheme } from './contexts'
 
 export const App = () => {
-  const { theme, toggleTheme } = useTheme()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [openSectionIds, setOpenSectionIds] = useState<string[]>(
+    defaultMenuSections[0] ? [defaultMenuSections[0].id] : []
+  )
+
+  const handleSectionToggle = (sectionId: string) => {
+    setOpenSectionIds(current =>
+      current.includes(sectionId) ? current.filter(id => id !== sectionId) : [...current, sectionId]
+    )
+  }
 
   return (
     <div className={styles['app-wrapper']}>
-      <div className={styles['theme-toggle-bar']}>
-        <button
-          type="button"
-          className={styles['theme-toggle-button']}
-          aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
-          onClick={toggleTheme}
-        >
-          <FontAwesomeIcon icon={faCircleHalfStroke} style={{ width: 14, height: 14 }} />
-        </button>
+      <Header isMenuOpen={isMenuOpen} onMenuToggleClick={() => setIsMenuOpen(v => !v)} />
+
+      <div className={styles['app-body']}>
+        {isMenuOpen && (
+          <MenuPanel
+            menuSections={defaultMenuSections}
+            openSectionIds={openSectionIds}
+            onSectionToggle={handleSectionToggle}
+          />
+        )}
+
+        <main className={styles['app-main']} style={{ padding: '40px 0' }}>
+          <AppRoutes />
+        </main>
       </div>
-      <Header />
-      <main className={styles['app-main']} style={{ padding: '40px 0' }}>
-        <AppRoutes />
-      </main>
+
       <Footer />
     </div>
   )
