@@ -2,6 +2,10 @@
   --bg: #fff;
   --surface: var(--white);
   --surface-text: var(--gray-90);
+  --surface-muted: var(--gray-5);
+  --text-muted: var(--gray-60);
+  --border: var(--gray-10);
+  --border-strong: var(--gray-30);
   --footer-surface: var(--blue-warm-vivid-90);
 
   // Textos
@@ -82,8 +86,12 @@
 
 :root[data-theme='dark'] {
   --bg: var(--gray-90);
-  --surface: var(--gray-80-main);
+  --surface: var(--bg);
   --surface-text: var(--gray-5);
+  --surface-muted: #262626;
+  --text-muted: var(--gray-30);
+  --border: #3a3a3a;
+  --border-strong: #545454;
   --footer-surface: var(--gray-90);
   color: var(--gray-5);
   background: var(--bg);
@@ -106,7 +114,7 @@ h1,
 h2 {
   font-family: var(--rawline);
   font-weight: 500;
-  color: var(--gray-80-main);
+  color: var(--surface-text);
 }
 
 h1 {

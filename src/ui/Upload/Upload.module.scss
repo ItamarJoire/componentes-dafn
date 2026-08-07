@@ -8,7 +8,7 @@
 .upload-label {
   font-size: 14px;
   font-weight: 700;
-  color: var(--gray-90);
+  color: var(--surface-text);
 }
 
 .upload-dropzone {
@@ -34,8 +34,8 @@
 
 .upload-dropzone.is-disabled {
   cursor: not-allowed;
-  background: var(--gray-5);
-  border-color: var(--gray-20);
+  background: var(--surface-muted);
+  border-color: var(--border);
 }
 
 .upload-icon {
@@ -69,7 +69,7 @@
 
 .upload-helper {
   font-size: 14px;
-  color: var(--gray-70);
+  color: var(--text-muted);
 }
 
 .upload-file-list {
@@ -85,9 +85,9 @@
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
-    border: 1px solid var(--gray-10);
+    border: 1px solid var(--border);
     border-radius: 4px;
-    color: var(--gray-80-main);
+    color: var(--surface-text);
     font-size: 14px;
   }
 }
@@ -105,7 +105,7 @@
   justify-content: center;
   border: none;
   background: transparent;
-  color: var(--gray-50);
+  color: var(--text-muted);
   cursor: pointer;
 
   &:hover {
